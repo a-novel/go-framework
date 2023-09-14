@@ -1,4 +1,4 @@
-package security
+package goframework
 
 import (
 	"math/rand"

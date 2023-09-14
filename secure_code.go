@@ -1,4 +1,4 @@
-package security
+package goframework
 
 import (
 	"encoding/base64"
