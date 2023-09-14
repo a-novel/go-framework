@@ -1,8 +1,8 @@
-package communication_test
+package goframework_test
 
 import (
 	"fmt"
-	"github.com/a-novel/go-framework/communication"
+	"github.com/a-novel/go-framework"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
@@ -15,7 +15,7 @@ func TestWaitForPing(t *testing.T) {
 	t.Log("WARNING: this test uses timeouts and may take a certain time to complete")
 
 	t.Run("Success", func(t *testing.T) {
-		require.NoError(t, communication.WaitForPingAuto(func() error {
+		require.NoError(t, goframework.WaitForPingAuto(func() error {
 			return nil
 		}))
 	})
@@ -23,7 +23,7 @@ func TestWaitForPing(t *testing.T) {
 	t.Run("Success/WithRetries", func(t *testing.T) {
 		var count int
 
-		require.NoError(t, communication.WaitForPingAuto(func() error {
+		require.NoError(t, goframework.WaitForPingAuto(func() error {
 			if count > 3 {
 				return nil
 			}
@@ -34,7 +34,7 @@ func TestWaitForPing(t *testing.T) {
 	})
 
 	t.Run("Error/Timeout", func(t *testing.T) {
-		require.ErrorIs(t, communication.WaitForPingAuto(func() error {
+		require.ErrorIs(t, goframework.WaitForPingAuto(func() error {
 			return fakeErr
 		}), fakeErr)
 	})

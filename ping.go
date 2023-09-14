@@ -1,4 +1,4 @@
-package communication
+package goframework
 
 import "time"
 
